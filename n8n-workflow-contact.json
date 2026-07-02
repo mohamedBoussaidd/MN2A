@@ -1,0 +1,97 @@
+{
+  "name": "Site — Formulaire de contact",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook-contact",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "contact"
+    },
+    {
+      "parameters": {
+        "sendTo": "mohamedboussaidd@gmail.com",
+        "subject": "=Nouvelle demande site — {{ $('Webhook').item.json.body.nom }}",
+        "message": "=Nouvelle demande depuis le site\n\nNom : {{ $('Webhook').item.json.body.nom }}\nEntreprise / métier : {{ $('Webhook').item.json.body.entreprise }}\nEmail : {{ $('Webhook').item.json.body.email }}\nTéléphone : {{ $('Webhook').item.json.body.telephone }}\nBesoin : {{ $('Webhook').item.json.body.besoin }}\nMessage : {{ $('Webhook').item.json.body.message }}\n\nReçu le : {{ $('Webhook').item.json.body.date }}\nSource : {{ $('Webhook').item.json.body.source }}",
+        "options": {}
+      },
+      "id": "gmail-notif",
+      "name": "Notifier Mohamed",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [500, 200],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REMPLACER_PAR_TON_CREDENTIAL_GMAIL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Webhook').item.json.body.email }}",
+        "subject": "Merci pour votre demande — Mohamed Boussaid",
+        "message": "=Bonjour {{ $('Webhook').item.json.body.nom }},\n\nMerci pour votre demande, je l'ai bien reçue.\n\nJe reviens vers vous très rapidement avec une première proposition — et votre maquette gratuite et sans engagement s'il s'agit d'un site.\n\nÀ très bientôt,\nMohamed Boussaid\n07 78 66 64 78\nmohamedboussaidd@gmail.com",
+        "options": {}
+      },
+      "id": "gmail-autoreply",
+      "name": "Réponse auto au prospect",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [740, 200],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REMPLACER_PAR_TON_CREDENTIAL_GMAIL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"success\": true } }}",
+        "options": {}
+      },
+      "id": "respond-ok",
+      "name": "Répondre au site",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [980, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Notifier Mohamed", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Notifier Mohamed": {
+      "main": [
+        [
+          { "node": "Réponse auto au prospect", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Réponse auto au prospect": {
+      "main": [
+        [
+          { "node": "Répondre au site", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

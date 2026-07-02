@@ -1,359 +1,726 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohamed Boussaid — Sites web & automatisation pour artisans, commerçants et TPE</title>
-<meta name="description" content="Développeur web indépendant. Sites simples et outils sur mesure pour artisans, commerçants et TPE. Un seul interlocuteur, tarifs clairs, maquette gratuite et sans engagement." />
-<style>
-  :root{
-    --bg:#0f1720; --surface:#ffffff; --ink:#1a2432; --muted:#5b6b7d;
-    --brand:#1f7a5c; --brand-dark:#155c44; --accent:#f4a259; --line:#e6ebf0;
-    --radius:14px; --shadow:0 10px 30px rgba(15,23,32,.08);
-    --max:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#f7f9fb}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-  .btn{display:inline-block;background:var(--brand);color:#fff;padding:14px 26px;border-radius:999px;font-weight:600;transition:.2s;border:none;cursor:pointer;font-size:1rem}
-  .btn:hover{background:var(--brand-dark);transform:translateY(-1px)}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
-  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Boussaid — Sites web & automatisation pour artisans, commerçants et TPE</title>
+  <meta name="description"
+    content="Développeur web indépendant. Sites simples et outils sur mesure pour artisans, commerçants et TPE. Un seul interlocuteur, tarifs clairs, maquette gratuite et sans engagement." />
+  <style>
+    :root {
+      --bg: #0f1720;
+      --surface: #ffffff;
+      --ink: #1a2432;
+      --muted: #5b6b7d;
+      --brand: #1f7a5c;
+      --brand-dark: #155c44;
+      --accent: #f4a259;
+      --line: #e6ebf0;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(15, 23, 32, .08);
+      --max: 1080px;
+    }
 
-  /* Header */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{font-weight:800;font-size:1.15rem;color:var(--ink)}
-  .logo span{color:var(--brand)}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem}
-  .nav-links a:hover{color:var(--brand)}
-  .nav-cta{background:var(--brand);color:#fff!important;padding:9px 18px;border-radius:999px}
-  .burger{display:none;font-size:1.6rem;background:none;border:none;cursor:pointer}
-  @media(max-width:760px){.nav-links{display:none}}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  /* Hero */
-  .hero{background:linear-gradient(160deg,#0f1720 0%,#153b30 100%);color:#fff;padding:88px 0 96px;position:relative;overflow:hidden}
-  .hero:after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;background:radial-gradient(circle,var(--brand) 0%,transparent 65%);opacity:.35}
-  .hero h1{font-size:2.6rem;line-height:1.15;max-width:16ch;margin-bottom:18px}
-  .hero p.lead{font-size:1.2rem;color:#cdd8e0;max-width:52ch;margin-bottom:14px}
-  .badge{display:inline-block;background:rgba(244,162,89,.15);color:var(--accent);border:1px solid rgba(244,162,89,.4);padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:22px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
-  .hero-note{margin-top:18px;color:#9fb0bd;font-size:.9rem}
+    html {
+      scroll-behavior: smooth
+    }
 
-  section{padding:72px 0}
-  .eyebrow{color:var(--brand);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.82rem;margin-bottom:10px}
-  h2{font-size:2rem;margin-bottom:14px}
-  .section-intro{color:var(--muted);max-width:60ch;margin-bottom:40px}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      background: #f7f9fb
+    }
 
-  .grid{display:grid;gap:22px}
-  .cols-3{grid-template-columns:repeat(3,1fr)}
-  .cols-2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:860px){.cols-3,.cols-2{grid-template-columns:1fr}}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:.2s}
-  .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,23,32,.12)}
-  .card .ico{font-size:1.8rem;margin-bottom:12px}
-  .card h3{font-size:1.2rem;margin-bottom:8px}
-  .card .price{color:var(--brand);font-weight:700;margin:10px 0}
-  .card ul{list-style:none;margin-top:12px}
-  .card ul li{padding-left:22px;position:relative;color:var(--muted);font-size:.95rem;margin-bottom:6px}
-  .card ul li:before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:700}
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px
+    }
 
-  .alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem
+    }
 
-  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-  @media(max-width:760px){.why{grid-template-columns:1fr}}
-  .why div h3{display:flex;gap:10px;align-items:center;margin-bottom:6px}
-  .why p{color:var(--muted)}
+    .btn:hover {
+      background: var(--brand-dark);
+      transform: translateY(-1px)
+    }
 
-  /* Contact */
-  .contact{background:linear-gradient(160deg,#153b30,#0f1720);color:#fff}
-  .contact h2{color:#fff}
-  .contact .section-intro{color:#cdd8e0}
-  .form-card{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);max-width:560px}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-weight:600;color:var(--ink);margin-bottom:6px;font-size:.92rem}
-  .field input,.field textarea,.field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;color:var(--ink)}
-  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(31,122,92,.15)}
-  .form-msg{margin-top:14px;font-weight:600;display:none}
-  .form-msg.ok{display:block;color:var(--brand-dark)}
-  .form-msg.err{display:block;color:#b3261e}
-  .contact-aside{color:#cdd8e0}
-  .contact-aside a{color:#fff;font-weight:600}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-  @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, .5)
+    }
 
-  footer{background:#0f1720;color:#8598a6;padding:30px 0;font-size:.88rem}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer a{color:#b7c4cf}
-</style>
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .12)
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--ink)
+    }
+
+    .logo span {
+      color: var(--brand)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: .95rem
+    }
+
+    .nav-links a:hover {
+      color: var(--brand)
+    }
+
+    .nav-cta {
+      background: var(--brand);
+      color: #fff !important;
+      padding: 9px 18px;
+      border-radius: 999px
+    }
+
+    .burger {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer
+    }
+
+    @media(max-width:760px) {
+      .nav-links {
+        display: none
+      }
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, #0f1720 0%, #153b30 100%);
+      color: #fff;
+      padding: 88px 0 96px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, var(--brand) 0%, transparent 65%);
+      opacity: .35
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      line-height: 1.15;
+      max-width: 16ch;
+      margin-bottom: 18px
+    }
+
+    .hero p.lead {
+      font-size: 1.2rem;
+      color: #cdd8e0;
+      max-width: 52ch;
+      margin-bottom: 14px
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(244, 162, 89, .15);
+      color: var(--accent);
+      border: 1px solid rgba(244, 162, 89, .4);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 22px
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      color: #9fb0bd;
+      font-size: .9rem
+    }
+
+    section {
+      padding: 72px 0
+    }
+
+    .eyebrow {
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      margin-bottom: 10px
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 14px
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 40px
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px
+    }
+
+    .cols-3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .cols-2 {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    @media(max-width:860px) {
+
+      .cols-3,
+      .cols-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: .2s
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(15, 23, 32, .12)
+    }
+
+    .card .ico {
+      font-size: 1.8rem;
+      margin-bottom: 12px
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px
+    }
+
+    .card .price {
+      color: var(--brand);
+      font-weight: 700;
+      margin: 10px 0
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 12px
+    }
+
+    .card ul li {
+      padding-left: 22px;
+      position: relative;
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 6px
+    }
+
+    .card ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--brand);
+      font-weight: 700
+    }
+
+    .alt {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .why {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px
+    }
+
+    @media(max-width:760px) {
+      .why {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .why div h3 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 6px
+    }
+
+    .why p {
+      color: var(--muted)
+    }
+
+    /* Contact */
+    .contact {
+      background: linear-gradient(160deg, #153b30, #0f1720);
+      color: #fff
+    }
+
+    .contact h2 {
+      color: #fff
+    }
+
+    .contact .section-intro {
+      color: #cdd8e0
+    }
+
+    .form-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      max-width: 560px
+    }
+
+    .field {
+      margin-bottom: 16px
+    }
+
+    .field label {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+      font-size: .92rem
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--ink)
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(31, 122, 92, .15)
+    }
+
+    .form-msg {
+      margin-top: 14px;
+      font-weight: 600;
+      display: none
+    }
+
+    .form-msg.ok {
+      display: block;
+      color: var(--brand-dark)
+    }
+
+    .form-msg.err {
+      display: block;
+      color: #b3261e
+    }
+
+    .contact-aside {
+      color: #cdd8e0
+    }
+
+    .contact-aside a {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start
+    }
+
+    @media(max-width:860px) {
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    footer {
+      background: #0f1720;
+      color: #8598a6;
+      padding: 30px 0;
+      font-size: .88rem
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    footer a {
+      color: #b7c4cf
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="wrap">
-    <nav>
-      <a href="#" class="logo">Mohamed<span>.dev</span></a>
-      <div class="nav-links">
-        <a href="#offres">Sites web</a>
-        <a href="#surmesure">Sur mesure</a>
-        <a href="#realisations">Réalisations</a>
-        <a href="#pourquoi">Pourquoi moi</a>
-        <a href="#contact" class="nav-cta">Maquette gratuite</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <span class="badge">Développeur indépendant · pas une agence</span>
-    <h1>Un site simple, ou un outil qui vous fait gagner du temps.</h1>
-    <p class="lead">Je crée des sites web clairs et des automatisations sur mesure pour les artisans, commerçants et petites entreprises. Un seul interlocuteur, joignable, du devis à la mise en ligne.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn">Demander ma maquette gratuite</a>
-      <a href="#offres" class="btn btn-ghost">Voir les offres</a>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a href="#" class="logo">Mohamed<span>.dev</span></a>
+        <div class="nav-links">
+          <a href="#offres">Sites web</a>
+          <a href="#surmesure">Sur mesure</a>
+          <a href="#realisations">Réalisations</a>
+          <a href="#pourquoi">Pourquoi moi</a>
+          <a href="#contact" class="nav-cta">Maquette gratuite</a>
+        </div>
+      </nav>
     </div>
-    <p class="hero-note">🎁 Maquette gratuite et sans engagement — vous voyez le résultat avant de décider.</p>
-  </div>
-</section>
-<!-- OFFRES SITES -->
-<section id="offres">
-  <div class="wrap">
-    <p class="eyebrow">Sites web</p>
-    <h2>Être visible, simplement</h2>
-    <p class="section-intro">Des sites soignés, adaptés au mobile, sans jargon. Vous choisissez le niveau qui vous convient — on peut toujours faire évoluer ensuite.</p>
-    <div class="grid cols-3">
-      <div class="card">
-        <div class="ico">🌱</div>
-        <h3>Vitrine Essentiel</h3>
-        <div class="price">à partir de 600 €</div>
-        <p>Pour être enfin visible sur Google, simplement.</p>
-        <ul>
-          <li>1 à 3 pages, design mobile</li>
-          <li>Infos, photos, horaires, plan</li>
-          <li>Bouton d'appel + contact</li>
-          <li>Référencement local de base</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico">🌿</div>
-        <h3>Vitrine Pro</h3>
-        <div class="price">à partir de 1 200 €</div>
-        <p>Un vrai site qui inspire confiance.</p>
-        <ul>
-          <li>Plusieurs pages sur mesure</li>
-          <li>Design à votre image</li>
-          <li>SEO local renforcé</li>
-          <li>Galerie / avant-après</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico">🌳</div>
-        <h3>Site + Fonctionnalité</h3>
-        <div class="price">à partir de 2 000 €</div>
-        <p>Votre site travaille pour vous.</p>
-        <ul>
-          <li>Prise de rendez-vous en ligne</li>
-          <li>Demande de devis intelligente</li>
-          <li>Espace client simple</li>
-          <li>Connexion à vos outils</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+  </header>
 
-<!-- SUR MESURE -->
-<section id="surmesure" class="alt">
-  <div class="wrap">
-    <p class="eyebrow">Sur mesure & automatisation</p>
-    <h2>Fini les tâches répétitives</h2>
-    <p class="section-intro">Devis, rappels, double saisie, relances… Ces heures perdues chaque mois peuvent se faire toutes seules. Je conçois de petits outils pensés pour votre métier.</p>
-    <div class="grid cols-3">
-      <div class="card">
-        <div class="ico">⚡</div>
-        <h3>Petite automatisation</h3>
-        <div class="price">à partir de 400 €</div>
-        <ul>
-          <li>Rappels de RDV automatiques</li>
-          <li>Formulaire → fiche client</li>
-          <li>Relances de devis auto</li>
-          <li>Connexion de vos outils</li>
-        </ul>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">Développeur indépendant · pas une agence</span>
+      <h1>Un site simple, ou un outil qui vous fait gagner du temps.</h1>
+      <p class="lead">Je crée des sites web clairs et des automatisations sur mesure pour les artisans, commerçants et
+        petites entreprises. Un seul interlocuteur, joignable, du devis à la mise en ligne.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn">Demander ma maquette gratuite</a>
+        <a href="#offres" class="btn btn-ghost">Voir les offres</a>
       </div>
-      <div class="card">
-        <div class="ico">🔧</div>
-        <h3>Outil interne</h3>
-        <div class="price">à partir de 1 500 €</div>
-        <ul>
-          <li>Devis & factures automatiques</li>
-          <li>Suivi de chantiers</li>
-          <li>Tableau de bord d'activité</li>
-          <li>Base clients centralisée</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico">🚀</div>
-        <h3>Application métier</h3>
-        <div class="price">sur devis · dès 4 000 €</div>
-        <ul>
-          <li>Application complète sur mesure</li>
-          <li>Robuste et évolutive</li>
-          <li>Pensée pour durer</li>
-          <li>Accompagnement inclus</li>
-        </ul>
+      <p class="hero-note">🎁 Maquette gratuite et sans engagement — vous voyez le résultat avant de décider.</p>
+    </div>
+  </section>
+  <!-- OFFRES SITES -->
+  <section id="offres">
+    <div class="wrap">
+      <p class="eyebrow">Sites web</p>
+      <h2>Être visible, simplement</h2>
+      <p class="section-intro">Des sites soignés, adaptés au mobile, sans jargon. Vous choisissez le niveau qui vous
+        convient — on peut toujours faire évoluer ensuite.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ico">🌱</div>
+          <h3>Vitrine Essentiel</h3>
+          <div class="price">à partir de 600 €</div>
+          <p>Pour être enfin visible sur Google, simplement.</p>
+          <ul>
+            <li>1 à 3 pages, design mobile</li>
+            <li>Infos, photos, horaires, plan</li>
+            <li>Bouton d'appel + contact</li>
+            <li>Référencement local de base</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ico">🌿</div>
+          <h3>Vitrine Pro</h3>
+          <div class="price">à partir de 1 200 €</div>
+          <p>Un vrai site qui inspire confiance.</p>
+          <ul>
+            <li>Plusieurs pages sur mesure</li>
+            <li>Design à votre image</li>
+            <li>SEO local renforcé</li>
+            <li>Galerie / avant-après</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ico">🌳</div>
+          <h3>Site + Fonctionnalité</h3>
+          <div class="price">à partir de 2 000 €</div>
+          <p>Votre site travaille pour vous.</p>
+          <ul>
+            <li>Prise de rendez-vous en ligne</li>
+            <li>Demande de devis intelligente</li>
+            <li>Espace client simple</li>
+            <li>Connexion à vos outils</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- REALISATIONS -->
-<section id="realisations">
-  <div class="wrap">
-    <p class="eyebrow">Réalisations</p>
-    <h2>Quelques exemples</h2>
-    <p class="section-intro">Remplacez ces cartes par vos vraies démos et captures avant/après (dossier 04 du classeur). Ajoutez une courte phrase : problème → solution → résultat.</p>
-    <div class="grid cols-3">
-      <div class="card">
-        <div class="ico">🍽️</div>
-        <h3>Site restaurant</h3>
-        <p>Menu, horaires, réservation en ligne. <em>[à remplacer par votre démo]</em></p>
-      </div>
-      <div class="card">
-        <div class="ico">🔨</div>
-        <h3>Site artisan bâtiment</h3>
-        <p>Présentation, galerie chantiers, demande de devis. <em>[à remplacer]</em></p>
-      </div>
-      <div class="card">
-        <div class="ico">🤖</div>
-        <h3>Automatisation n8n</h3>
-        <p>Formulaire → email + fiche client créée automatiquement. <em>[à remplacer]</em></p>
+  <!-- SUR MESURE -->
+  <section id="surmesure" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Sur mesure & automatisation</p>
+      <h2>Fini les tâches répétitives</h2>
+      <p class="section-intro">Devis, rappels, double saisie, relances… Ces heures perdues chaque mois peuvent se faire
+        toutes seules. Je conçois de petits outils pensés pour votre métier.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ico">⚡</div>
+          <h3>Petite automatisation</h3>
+          <div class="price">à partir de 400 €</div>
+          <ul>
+            <li>Rappels de RDV automatiques</li>
+            <li>Formulaire → fiche client</li>
+            <li>Relances de devis auto</li>
+            <li>Connexion de vos outils</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ico">🔧</div>
+          <h3>Outil interne</h3>
+          <div class="price">à partir de 1 500 €</div>
+          <ul>
+            <li>Devis & factures automatiques</li>
+            <li>Suivi de chantiers</li>
+            <li>Tableau de bord d'activité</li>
+            <li>Base clients centralisée</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ico">🚀</div>
+          <h3>Application métier</h3>
+          <div class="price">sur devis · dès 4 000 €</div>
+          <ul>
+            <li>Application complète sur mesure</li>
+            <li>Robuste et évolutive</li>
+            <li>Pensée pour durer</li>
+            <li>Accompagnement inclus</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- POURQUOI -->
-<section id="pourquoi" class="alt">
-  <div class="wrap">
-    <p class="eyebrow">Pourquoi moi</p>
-    <h2>Un interlocuteur unique, pas une agence</h2>
-    <div class="why" style="margin-top:30px">
-      <div><h3>🤝 Direct avec la personne qui code</h3><p>Pas de commercial, pas d'intermédiaire. Vous parlez à celui qui réalise votre projet, du début à la fin.</p></div>
-      <div><h3>⚡ Disponible et réactif</h3><p>Une question, une modif ? Vous avez une vraie réponse rapidement, sans ticket ni file d'attente.</p></div>
-      <div><h3>💶 Tarifs clairs, annoncés vite</h3><p>Des prix « à partir de » affichés, et un chiffrage précis rapidement après un simple échange. Pas de zone d'ombre.</p></div>
-      <div><h3>🔗 Sites ET automatisation</h3><p>Rare chez un simple créateur de site : je fais votre site et je vous fais gagner du temps réel sur vos tâches.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <p class="eyebrow" style="color:var(--accent)">Contact</p>
-        <h2>Votre maquette gratuite</h2>
-        <p class="section-intro">Dites-moi en deux lignes ce dont vous avez besoin. Je vous réponds vite, et je vous prépare une maquette sans engagement.</p>
-        <div class="contact-aside">
-          <p>📞 <a href="tel:+33778666478">07 78 66 64 78</a></p>
-          <p>✉️ <a href="mailto:mohamedboussaidd@gmail.com">mohamedboussaidd@gmail.com</a></p>
-          <p>⚡ Réponse rapide, échange sans engagement</p>
+  <!-- REALISATIONS -->
+  <section id="realisations">
+    <div class="wrap">
+      <p class="eyebrow">Réalisations</p>
+      <h2>Quelques exemples</h2>
+      <p class="section-intro">Remplacez ces cartes par vos vraies démos et captures avant/après (dossier 04 du
+        classeur). Ajoutez une courte phrase : problème → solution → résultat.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ico">🍽️</div>
+          <h3>Site restaurant</h3>
+          <p>Menu, horaires, réservation en ligne. <em>[à remplacer par votre démo]</em></p>
+        </div>
+        <div class="card">
+          <div class="ico">🔨</div>
+          <h3>Site artisan bâtiment</h3>
+          <p>Présentation, galerie chantiers, demande de devis. <em>[à remplacer]</em></p>
+        </div>
+        <div class="card">
+          <div class="ico">🤖</div>
+          <h3>Automatisation n8n</h3>
+          <p>Formulaire → email + fiche client créée automatiquement. <em>[à remplacer]</em></p>
         </div>
       </div>
-      <form class="form-card" action="https://formspree.io/f/mwvdwloy"
-  method="POST" id="contactForm">
-        <div class="field">
-          <label for="nom">Votre nom *</label>
-          <input type="text" id="nom" name="nom" required />
-        </div>
-        <div class="field">
-          <label for="entreprise">Entreprise / métier</label>
-          <input type="text" id="entreprise" name="entreprise" />
-        </div>
-        <div class="field">
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="field">
-          <label for="telephone">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone" />
-        </div>
-        <div class="field">
-          <label for="besoin">Votre besoin *</label>
-          <select id="besoin" name="besoin" required>
-            <option value="">— Choisir —</option>
-            <option>Créer un site</option>
-            <option>Refaire mon site</option>
-            <option>Prise de RDV en ligne</option>
-            <option>Automatiser une tâche</option>
-            <option>Autre / je ne sais pas</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="3" placeholder="En quelques mots…"></textarea>
-        </div>
-        <button type="submit" class="btn" style="width:100%">Recevoir ma maquette gratuite</button>
-        <p class="form-msg" id="formMsg"></p>
-      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <div>© <span id="year"></span> Mohamed Boussaid — Micro-entreprise · 07 78 66 64 78</div>
-    <div><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></div>
-  </div>
-</footer>
+  <!-- POURQUOI -->
+  <section id="pourquoi" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Pourquoi moi</p>
+      <h2>Un interlocuteur unique, pas une agence</h2>
+      <div class="why" style="margin-top:30px">
+        <div>
+          <h3>🤝 Direct avec la personne qui code</h3>
+          <p>Pas de commercial, pas d'intermédiaire. Vous parlez à celui qui réalise votre projet, du début à la fin.
+          </p>
+        </div>
+        <div>
+          <h3>⚡ Disponible et réactif</h3>
+          <p>Une question, une modif ? Vous avez une vraie réponse rapidement, sans ticket ni file d'attente.</p>
+        </div>
+        <div>
+          <h3>💶 Tarifs clairs, annoncés vite</h3>
+          <p>Des prix « à partir de » affichés, et un chiffrage précis rapidement après un simple échange. Pas de zone
+            d'ombre.</p>
+        </div>
+        <div>
+          <h3>🔗 Sites ET automatisation</h3>
+          <p>Rare chez un simple créateur de site : je fais votre site et je vous fais gagner du temps réel sur vos
+            tâches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow" style="color:var(--accent)">Contact</p>
+          <h2>Votre maquette gratuite</h2>
+          <p class="section-intro">Dites-moi en deux lignes ce dont vous avez besoin. Je vous réponds vite, et je vous
+            prépare une maquette sans engagement.</p>
+          <div class="contact-aside">
+            <p>📞 <a href="tel:+33778666478">07 78 66 64 78</a></p>
+            <p>✉️ <a href="mailto:mohamedboussaidd@gmail.com">mohamedboussaidd@gmail.com</a></p>
+            <p>⚡ Réponse rapide, échange sans engagement</p>
+          </div>
+        </div>
+        <form class="form-card" action="https://formspree.io/f/mwvdwloy" method="POST" id="contactForm">
+          <div class="field">
+            <label for="nom">Votre nom *</label>
+            <input type="text" id="nom" name="nom" required />
+          </div>
+          <div class="field">
+            <label for="entreprise">Entreprise / métier</label>
+            <input type="text" id="entreprise" name="entreprise" />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" />
+          </div>
+          <div class="field">
+            <label for="besoin">Votre besoin *</label>
+            <select id="besoin" name="besoin" required>
+              <option value="">— Choisir —</option>
+              <option>Créer un site</option>
+              <option>Refaire mon site</option>
+              <option>Prise de RDV en ligne</option>
+              <option>Automatiser une tâche</option>
+              <option>Autre / je ne sais pas</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="3" placeholder="En quelques mots…"></textarea>
+          </div>
+          <button type="submit" class="btn" style="width:100%">Recevoir ma maquette gratuite</button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  // ⚙️ REMPLACEZ par l'URL de votre webhook n8n (voir README.md)
-  const N8N_WEBHOOK_URL = "https://VOTRE-INSTANCE-N8N/webhook/contact";
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> Mohamed Boussaid — Micro-entreprise · 07 78 66 64 78</div>
+      <div><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></div>
+    </div>
+  </footer>
 
-  const form = document.getElementById('contactForm');
-  const msg = document.getElementById('formMsg');
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    msg.className = 'form-msg';
-    const btn = form.querySelector('button[type="submit"]');
-    const data = Object.fromEntries(new FormData(form).entries());
-    data.date = new Date().toISOString();
-    data.source = 'site-vitrine';
+    // ⚙️ REMPLACEZ par l'URL de votre webhook n8n (voir README.md)
+    const N8N_WEBHOOK_URL = "https://aigenerator.vps114066.serveur-vps.net/webhook-test/contact";
 
-    if (N8N_WEBHOOK_URL.includes('VOTRE-INSTANCE-N8N')) {
-      msg.textContent = "⚠️ Formulaire non encore branché : configurez l'URL du webhook n8n (voir README).";
-      msg.classList.add('err');
-      return;
-    }
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
 
-    btn.disabled = true; btn.textContent = 'Envoi…';
-    try {
-      const res = await fetch(N8N_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      msg.textContent = "✅ Merci ! Votre demande est envoyée. Je vous réponds très vite.";
-      msg.classList.add('ok');
-      form.reset();
-    } catch (err) {
-      msg.textContent = "❌ Oups, l'envoi a échoué. Écrivez-moi directement à mohamedboussaidd@gmail.com.";
-      msg.classList.add('err');
-    } finally {
-      btn.disabled = false; btn.textContent = 'Recevoir ma maquette gratuite';
-    }
-  });
-</script>
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'form-msg';
+      const btn = form.querySelector('button[type="submit"]');
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.date = new Date().toISOString();
+      data.source = 'site-vitrine';
+
+      if (N8N_WEBHOOK_URL.includes('VOTRE-INSTANCE-N8N')) {
+        msg.textContent = "⚠️ Formulaire non encore branché : configurez l'URL du webhook n8n (voir README).";
+        msg.classList.add('err');
+        return;
+      }
+
+      btn.disabled = true; btn.textContent = 'Envoi…';
+      try {
+        const res = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        msg.textContent = "✅ Merci ! Votre demande est envoyée. Je vous réponds très vite.";
+        msg.classList.add('ok');
+        form.reset();
+      } catch (err) {
+        msg.textContent = "❌ Oups, l'envoi a échoué. Écrivez-moi directement à mohamedboussaidd@gmail.com.";
+        msg.classList.add('err');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Recevoir ma maquette gratuite';
+      }
+    });
+  </script>
 </body>
+
 </html>
