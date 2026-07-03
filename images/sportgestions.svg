@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
+  <!-- browser bar -->
+  <rect width="800" height="36" fill="#e8ecf0"/>
+  <circle cx="20" cy="18" r="5" fill="#ff5f57"/>
+  <circle cx="38" cy="18" r="5" fill="#febc2e"/>
+  <circle cx="56" cy="18" r="5" fill="#28c840"/>
+  <rect x="80" y="8" width="640" height="20" rx="10" fill="#ffffff"/>
+  <text x="95" y="22" font-size="12" fill="#8a97a3">sportgestions.fr — Plateforme staff technique</text>
+  <!-- left panel -->
+  <rect y="36" width="400" height="464" fill="#f7f8fa"/>
+  <rect x="30" y="60" width="34" height="34" rx="9" fill="#0e1420"/>
+  <circle cx="47" cy="77" r="9" fill="none" stroke="#2ecc71" stroke-width="2"/>
+  <text x="74" y="76" font-size="14" font-weight="bold" fill="#111827">SPORT GESTIONS</text>
+  <text x="74" y="92" font-size="11" fill="#8a97a3">Performance staff</text>
+  <text x="40" y="185" font-size="30" font-weight="bold" fill="#111827">Bon retour.</text>
+  <text x="40" y="210" font-size="13" fill="#6b7280">Connectez-vous pour accéder à votre staff.</text>
+  <text x="40" y="248" font-size="12" fill="#374151">Adresse e-mail</text>
+  <rect x="40" y="258" width="320" height="38" rx="8" fill="#eef2f9" stroke="#d7dfeb"/>
+  <text x="40" y="322" font-size="12" fill="#374151">Mot de passe</text>
+  <rect x="40" y="332" width="320" height="38" rx="8" fill="#eef2f9" stroke="#d7dfeb"/>
+  <text x="55" y="357" font-size="14" fill="#6b7280">••••••••••••</text>
+  <rect x="40" y="392" width="320" height="42" rx="8" fill="#1d8a44"/>
+  <text x="200" y="419" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Se connecter →</text>
+  <!-- right panel : terrain -->
+  <rect x="400" y="36" width="400" height="464" fill="#12301f"/>
+  <rect x="410" y="36" width="40" height="464" fill="#143523" opacity=".6"/>
+  <rect x="490" y="36" width="40" height="464" fill="#143523" opacity=".6"/>
+  <rect x="570" y="36" width="40" height="464" fill="#143523" opacity=".6"/>
+  <rect x="650" y="36" width="40" height="464" fill="#143523" opacity=".6"/>
+  <rect x="730" y="36" width="40" height="464" fill="#143523" opacity=".6"/>
+  <line x1="600" y1="36" x2="600" y2="500" stroke="#2c5c40" stroke-width="2"/>
+  <circle cx="600" cy="240" r="70" fill="none" stroke="#2c5c40" stroke-width="2"/>
+  <circle cx="600" cy="240" r="4" fill="#2c5c40"/>
+  <rect x="430" y="380" width="130" height="26" rx="13" fill="#0e1e15"/>
+  <circle cx="445" cy="393" r="4" fill="#2ecc71"/>
+  <text x="456" y="397" font-size="11" fill="#e5efe9">Performance staff</text>
+  <text x="430" y="435" font-size="17" fill="#ffffff">« Le travail invisible se</text>
+  <text x="430" y="458" font-size="17" fill="#ffffff">voit dans les chiffres. »</text>
+  <text x="430" y="480" font-size="11" fill="#9db8a8">— Manifeste préparateur</text>
+</svg>

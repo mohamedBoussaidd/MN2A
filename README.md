@@ -7,7 +7,7 @@ Cherche et remplace dans `index.html` :
 - `[votre téléphone]` et le lien `tel:+33000000000`
 - Les cartes de la section **Réalisations** (mets tes vraies démos + captures du dossier `04_`)
 - Les liens **Mentions légales / Confidentialité** du pied de page (utilise `06_Admin-Compta/mentions-legales-site.md`)
-- Le nom `Mohamed.dev` si tu veux un autre logo
+- Le logo est `MN2A` (changé le 03/07/2026 — plus de prix affichés sur le site, message « devis gratuit sous 48h »)
 
 ## 2. Brancher le formulaire sur n8n (ton atout démo)
 Le formulaire envoie un POST JSON vers un **webhook n8n**. Étapes :

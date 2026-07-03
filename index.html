@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohamed Boussaid — Sites web & automatisation pour artisans, commerçants et TPE</title>
+  <title>MN2A — Sites web & automatisation pour artisans, commerçants et TPE</title>
   <meta name="description"
-    content="Développeur web indépendant. Sites simples et outils sur mesure pour artisans, commerçants et TPE. Un seul interlocuteur, tarifs clairs, maquette gratuite et sans engagement." />
+    content="MN2A — développeur web indépendant. Sites simples et outils sur mesure pour artisans, commerçants et TPE. Un seul interlocuteur, devis gratuit sous 48h, maquette sans engagement." />
   <style>
     :root {
       --bg: #0f1720;
@@ -297,6 +297,52 @@
       font-weight: 700
     }
 
+    /* Cartes réalisations */
+    a.card.work {
+      display: block;
+      padding: 0;
+      overflow: hidden
+    }
+
+    .work .thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #0f1720
+    }
+
+    .work .body {
+      padding: 22px 24px
+    }
+
+    .work .tag {
+      display: inline-block;
+      background: rgba(31, 122, 92, .1);
+      color: var(--brand);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .03em
+    }
+
+    .work .body p {
+      color: var(--muted);
+      font-size: .95rem
+    }
+
+    .work .link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--brand);
+      font-weight: 600;
+      font-size: .92rem
+    }
+
     .alt {
       background: #fff;
       border-top: 1px solid var(--line);
@@ -443,7 +489,7 @@
   <header>
     <div class="wrap">
       <nav>
-        <a href="#" class="logo">Mohamed<span>.dev</span></a>
+        <a href="#" class="logo">MN<span>2A</span></a>
         <div class="nav-links">
           <a href="#offres">Sites web</a>
           <a href="#surmesure">Sur mesure</a>
@@ -474,13 +520,13 @@
     <div class="wrap">
       <p class="eyebrow">Sites web</p>
       <h2>Être visible, simplement</h2>
-      <p class="section-intro">Des sites soignés, adaptés au mobile, sans jargon. Vous choisissez le niveau qui vous
-        convient — on peut toujours faire évoluer ensuite.</p>
+      <p class="section-intro">Des sites soignés, adaptés au mobile, sans jargon. Chaque projet est différent : on en
+        parle rapidement, et vous recevez un devis clair sous 48h. On peut toujours faire évoluer ensuite.</p>
       <div class="grid cols-3">
         <div class="card">
           <div class="ico">🌱</div>
           <h3>Vitrine Essentiel</h3>
-          <div class="price">à partir de 600 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <p>Pour être enfin visible sur Google, simplement.</p>
           <ul>
             <li>1 à 3 pages, design mobile</li>
@@ -492,7 +538,7 @@
         <div class="card">
           <div class="ico">🌿</div>
           <h3>Vitrine Pro</h3>
-          <div class="price">à partir de 1 200 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <p>Un vrai site qui inspire confiance.</p>
           <ul>
             <li>Plusieurs pages sur mesure</li>
@@ -504,7 +550,7 @@
         <div class="card">
           <div class="ico">🌳</div>
           <h3>Site + Fonctionnalité</h3>
-          <div class="price">à partir de 2 000 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <p>Votre site travaille pour vous.</p>
           <ul>
             <li>Prise de rendez-vous en ligne</li>
@@ -523,12 +569,13 @@
       <p class="eyebrow">Sur mesure & automatisation</p>
       <h2>Fini les tâches répétitives</h2>
       <p class="section-intro">Devis, rappels, double saisie, relances… Ces heures perdues chaque mois peuvent se faire
-        toutes seules. Je conçois de petits outils pensés pour votre métier.</p>
+        toutes seules. Je conçois de petits outils pensés pour votre métier. Chaque besoin est unique : un court
+        échange suffit pour le cadrer et vous chiffrer la solution.</p>
       <div class="grid cols-3">
         <div class="card">
           <div class="ico">⚡</div>
           <h3>Petite automatisation</h3>
-          <div class="price">à partir de 400 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <ul>
             <li>Rappels de RDV automatiques</li>
             <li>Formulaire → fiche client</li>
@@ -539,7 +586,7 @@
         <div class="card">
           <div class="ico">🔧</div>
           <h3>Outil interne</h3>
-          <div class="price">à partir de 1 500 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <ul>
             <li>Devis & factures automatiques</li>
             <li>Suivi de chantiers</li>
@@ -550,7 +597,7 @@
         <div class="card">
           <div class="ico">🚀</div>
           <h3>Application métier</h3>
-          <div class="price">sur devis · dès 4 000 €</div>
+          <div class="price">Devis gratuit sous 48h</div>
           <ul>
             <li>Application complète sur mesure</li>
             <li>Robuste et évolutive</li>
@@ -567,24 +614,39 @@
     <div class="wrap">
       <p class="eyebrow">Réalisations</p>
       <h2>Quelques exemples</h2>
-      <p class="section-intro">Remplacez ces cartes par vos vraies démos et captures avant/après (dossier 04 du
-        classeur). Ajoutez une courte phrase : problème → solution → résultat.</p>
+      <p class="section-intro">Des projets réels, en ligne aujourd'hui. Cliquez pour les découvrir.</p>
       <div class="grid cols-3">
-        <div class="card">
-          <div class="ico">🍽️</div>
-          <h3>Site restaurant</h3>
-          <p>Menu, horaires, réservation en ligne. <em>[à remplacer par votre démo]</em></p>
-        </div>
-        <div class="card">
-          <div class="ico">🔨</div>
-          <h3>Site artisan bâtiment</h3>
-          <p>Présentation, galerie chantiers, demande de devis. <em>[à remplacer]</em></p>
-        </div>
-        <div class="card">
-          <div class="ico">🤖</div>
-          <h3>Automatisation n8n</h3>
-          <p>Formulaire → email + fiche client créée automatiquement. <em>[à remplacer]</em></p>
-        </div>
+        <a class="card work" href="https://protectyourhome.forprotectyourhome.workers.dev/" target="_blank"
+          rel="noopener">
+          <img class="thumb" src="images/protectyourhome.svg" alt="Site vitrine ProtectYourHome — film solaire" />
+          <div class="body">
+            <span class="tag">Site vitrine</span>
+            <h3>ProtectYourHome</h3>
+            <p>Site vitrine pour un poseur de film solaire en Suisse : avant/après interactif, avis clients, et
+              formulaire de devis reçu directement par l'artisan.</p>
+            <span class="link">Voir le site →</span>
+          </div>
+        </a>
+        <a class="card work" href="https://sportgestions.fr/" target="_blank" rel="noopener">
+          <img class="thumb" src="images/sportgestions.svg" alt="SportGestions — plateforme staff technique" />
+          <div class="body">
+            <span class="tag">Application métier</span>
+            <h3>SportGestions</h3>
+            <p>Plateforme web pour préparateurs physiques et staffs techniques : suivi des joueurs et des données de
+              performance, avec accès sécurisé (espace privé).</p>
+            <span class="link">Voir le site →</span>
+          </div>
+        </a>
+        <a class="card work" href="https://simplefacture.fr/home" target="_blank" rel="noopener">
+          <img class="thumb" src="images/simplefacture.svg" alt="SimpleFacture — facturation en ligne" />
+          <div class="body">
+            <span class="tag">Application + automatisation</span>
+            <h3>SimpleFacture</h3>
+            <p>Application complète de facturation pour indépendants : devis, factures PDF, relances automatiques,
+              signature électronique et assistant IA sur Telegram.</p>
+            <span class="link">Voir le site →</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -605,14 +667,43 @@
           <p>Une question, une modif ? Vous avez une vraie réponse rapidement, sans ticket ni file d'attente.</p>
         </div>
         <div>
-          <h3>💶 Tarifs clairs, annoncés vite</h3>
-          <p>Des prix « à partir de » affichés, et un chiffrage précis rapidement après un simple échange. Pas de zone
-            d'ombre.</p>
+          <h3>💶 Devis clair, sans surprise</h3>
+          <p>Chaque projet est différent. Un court échange pour cadrer votre besoin, et vous recevez un devis précis
+            sous 48h. Pas de zone d'ombre.</p>
         </div>
         <div>
           <h3>🔗 Sites ET automatisation</h3>
           <p>Rare chez un simple créateur de site : je fais votre site et je vous fais gagner du temps réel sur vos
             tâches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <p class="eyebrow">Comment ça se passe</p>
+      <h2>Simple, rapide, sans engagement</h2>
+      <p class="section-intro">Tous les projets ne se ressemblent pas : besoins, délais et budgets sont différents à
+        chaque fois. C'est pour ça que je ne vends pas de formule toute faite — on en parle, et vous savez très vite
+        où vous allez.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ico">1️⃣</div>
+          <h3>On échange 15 minutes</h3>
+          <p>Par téléphone ou par mail, vous m'expliquez votre besoin avec vos mots. Gratuit et sans engagement.</p>
+        </div>
+        <div class="card">
+          <div class="ico">2️⃣</div>
+          <h3>Je cadre votre besoin</h3>
+          <p>Je reformule ce qu'il vous faut vraiment — ni plus, ni moins — et je vous propose la solution la plus
+            simple.</p>
+        </div>
+        <div class="card">
+          <div class="ico">3️⃣</div>
+          <h3>Devis clair sous 48h</h3>
+          <p>Vous recevez un prix précis et détaillé. Vous décidez ensuite, tranquillement, sans pression.</p>
         </div>
       </div>
     </div>
@@ -674,7 +765,7 @@
 
   <footer>
     <div class="wrap">
-      <div>© <span id="year"></span> Mohamed Boussaid — Micro-entreprise · 07 78 66 64 78</div>
+      <div>© <span id="year"></span> MN2A — Mohamed Boussaid · Micro-entreprise · 07 78 66 64 78</div>
       <div><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></div>
     </div>
   </footer>
